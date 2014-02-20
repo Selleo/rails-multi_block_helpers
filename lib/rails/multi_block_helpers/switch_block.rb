@@ -24,7 +24,7 @@ module SwitchBlock
     end
 
     def method_missing(method, *args, &block)
-      if (method.downcase == @x.to_sym.downcase or method == :always) or (@called == false and method == :else) then
+      if (method.to_s.downcase == @x.to_s.downcase or method == :always) or (@called == false and method == :else) then
         @called = true
         if args.size > 0 then
           @ret = args.first.call(*@args)
